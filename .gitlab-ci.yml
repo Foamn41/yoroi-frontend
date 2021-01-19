@@ -1,5 +1,10 @@
 image: node:12
 
+cache:
+  paths:
+    - node_modules/
+  policy: pull
+
 stages:
   - prebuild
   - build
@@ -29,4 +34,5 @@ test build:
 e2e tests:
   stage: tests
   script:
+   - npm install
    - npm run test:run:e2e:chrome
