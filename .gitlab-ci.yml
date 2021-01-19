@@ -2,16 +2,22 @@ image: node:12
 
 stages:
   - prebuild
+  - build
 
-flow tests:
+static tests:
   stage: prebuild
   script:
-    - yarn install
-    - yarn run flow
+    - npm install
+    - npm run flow
+    - npm run eslint
 
-eslint tests:
+unit tests:
   stage: prebuild
   script:
-    - yarn install
-    - yarn run eslint
+    - npm install
+    - npm run jest
 
+test build:
+  stage: build
+  script:
+    - npm run test:build
