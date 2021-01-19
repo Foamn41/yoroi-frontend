@@ -1,0 +1,16 @@
+image: node:12
+
+stages:
+  - prebuild
+
+flow tests:
+  stage: prebuild
+  script:
+    - yarn install
+    - yarn run flow
+
+eslint tests:
+  stage: prebuild
+  script:
+    - yarn install
+    - yarn run eslint
