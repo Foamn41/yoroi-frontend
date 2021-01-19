@@ -27,12 +27,11 @@ test build:
   stage: build
   script:
     - npm install
-    - ls
     - npm run test:build
-    - ls
 
 e2e tests:
   stage: tests
   script:
    - npm install
+   - npm run test:build
    - npm run test:run:e2e:chrome
