@@ -3,6 +3,7 @@ image: node:12
 stages:
   - prebuild
   - build
+  - tests
 
 static tests:
   stage: prebuild
@@ -22,3 +23,8 @@ test build:
   script:
     - npm install
     - npm run test:build
+
+e2e tests:
+  stage: tests
+  script:
+   - npm run test:run:e2e:chrome
