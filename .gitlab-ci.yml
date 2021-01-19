@@ -22,7 +22,9 @@ test build:
   stage: build
   script:
     - npm install
+    - ls
     - npm run test:build
+    - ls
 
 e2e tests:
   stage: tests
