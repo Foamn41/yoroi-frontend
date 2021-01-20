@@ -4,27 +4,9 @@ cache:
   policy: pull
 
 stages:
-  - setup environment
   - prebuild
   - build
   - tests
-
-build & push image:
-  stage: setup environment
-  when: manual
-  before_script:
-    - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
-  variables:
-    DOCKER_TLS_CERTDIR: ''
-    CONTAINER_NAME: "$CI_REGISTRY/emurgo.io/yoroi-frontend/ci/"
-  image: docker
-  services:
-    - docker:dind
-  script:
-    - docker pull $CONTAINER_NAME:latest || true
-    - docker build --no-cache --tag $CONTAINER_NAME:$CI_COMMIT_SHA --tag $CONTAINER_NAME:latest ./ci/docker/base
-    - docker push $CONTAINER_NAME:$CI_COMMIT_SHA
-    - docker push $CONTAINER_NAME:latest
 
 static tests:
   image: node:12
@@ -49,7 +31,7 @@ test build:
     - npm run test:build
 
 e2e tests:
-  image: registry.gitlab.com/emurgo.io/yoroi-frontend/ci
+  image: registry.gitlab.com/emurgo.io/yoroi-frontend
   stage: tests
   script:
    - npm install
