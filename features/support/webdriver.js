@@ -54,6 +54,7 @@ function getChromeBuilder() {
         '--start-maximized',
         '--disable-setuid-sandbox',
         '--no-sandbox',
+				'--headless',
         '--disable-dev-shm-usage',
       ));
 }
