@@ -4,6 +4,7 @@ cache:
   policy: pull
 
 stages:
+  - setup environment
   - prebuild
   - build
   - tests
