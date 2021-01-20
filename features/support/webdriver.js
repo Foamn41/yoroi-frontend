@@ -54,7 +54,8 @@ function getChromeBuilder() {
         '--start-maximized',
         '--disable-setuid-sandbox',
         '--no-sandbox',
-				'--headless',
+        '--headless',
+				'--remote-debugging-port=9222',
         '--disable-dev-shm-usage',
       ));
 }
